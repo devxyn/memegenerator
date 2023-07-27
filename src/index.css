@@ -1,0 +1,9 @@
+* {
+  margin: 0;
+  box-sizing: border-box;
+  font-family: Karla, Inter, sans-serif;
+}
+
+main {
+  padding: 36px;
+}
