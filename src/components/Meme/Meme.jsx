@@ -28,26 +28,32 @@ const Meme = () => {
     setMeme((prev) => ({ ...prev, [event.target.name]: event.target.value }));
   }
 
+  console.log(meme.randomImage);
+
   return (
     <main className="meme">
       <div className="meme--form">
-        <input
-          type="text"
-          placeholder="Top text"
-          className="meme--input"
-          name="topText"
-          onChange={handleChange}
-          value={meme.topText}
-        />
+        {meme.randomImage && (
+          <input
+            type="text"
+            placeholder="Top text"
+            className="meme--input"
+            name="topText"
+            onChange={handleChange}
+            value={meme.topText}
+          />
+        )}
 
-        <input
-          type="text"
-          placeholder="Bottom text"
-          className="meme--input"
-          name="bottomText"
-          onChange={handleChange}
-          value={meme.bottomText}
-        />
+        {meme.randomImage && (
+          <input
+            type="text"
+            placeholder="Bottom text"
+            className="meme--input"
+            name="bottomText"
+            onChange={handleChange}
+            value={meme.bottomText}
+          />
+        )}
 
         <button className="meme--btn" onClick={getMemeImage}>
           Get a new meme image
