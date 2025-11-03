@@ -75,7 +75,7 @@ const MemeSection = () => {
     <section className='w-full h-full lg:h-[88dvh] flex flex-col p-5 lg:p-0 lg:flex-row overflow-hidden'>
       <div className='flex-1 flex items-center justify-center lg:justify-start lg:ml-20 bg-white mb-10 lg:mb-0'>
         <div className='w-full max-w-md'>
-          <p className='text-center lg:text-left text-xl lg:text-2xl font-bold text-purple-900 mb-1'>
+          <p className='text-center lg:text-left text-xl lg:text-4xl font-bold text-purple-900 mb-1'>
             Welcome to the Random Meme Generator!
           </p>
           <p className='text-sm lg:text-base mb-4'>
