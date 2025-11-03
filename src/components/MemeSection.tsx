@@ -34,6 +34,7 @@ const MemeSection = () => {
       const memeData = JSON.stringify(response.data.memes);
 
       localStorage.setItem("memes", memeData);
+      setAllMemes(response.data.memes);
     } catch (error) {
       const errorMessage = error instanceof Error ? error.message : String(error);
       console.error(errorMessage);
