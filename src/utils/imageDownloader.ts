@@ -1,4 +1,4 @@
-export const downloadImage = async (meme: { topText: string; bottomText: string; url: string }) => {
+export const downloadImage = (meme: { topText: string; bottomText: string; url: string }) => {
   if (!meme.url) return;
   // Create a canvas to add texts
   const img = new window.Image();
@@ -32,7 +32,6 @@ export const downloadImage = async (meme: { topText: string; bottomText: string;
           [2, 0],
           [0, -2],
           [-2, 0],
-          [2, 2], // Last is blur, but can't blur in canvas directly
         ];
         // Draw black shadow
         ctx.save();
@@ -64,5 +63,9 @@ export const downloadImage = async (meme: { topText: string; bottomText: string;
       link.href = canvas.toDataURL();
       link.click();
     }
+  };
+  img.onerror = () => {
+    console.error("Failed to load image for download.");
+    alert("Failed to download image.");
   };
 };
