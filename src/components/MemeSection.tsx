@@ -54,7 +54,13 @@ const MemeSection = () => {
     const memes = localStorage.getItem("memes");
 
     if (memes) {
-      setAllMemes(JSON.parse(memes));
+      try {
+        setAllMemes(JSON.parse(memes));
+      } catch {
+        console.error("Failed to parse cached memes, fetching fresh data");
+        localStorage.removeItem("memes");
+        fetchMemes();
+      }
     } else {
       fetchMemes();
     }
