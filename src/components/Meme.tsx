@@ -15,12 +15,16 @@ const Meme = ({ meme }: MemeProps) => {
             <img src={meme.url} alt='meme' className='object-contain max-w-full max-h-[75dvh]' loading='lazy' />
           )}
           {meme.topText && (
-            <h2 className='text-overlay top-0' style={{ fontFamily: "Impact, sans-serif" }}>
+            <h2
+              className='text-overlay  my-2 xs:my-4 text-2xl xs:text-3xl top-0'
+              style={{ fontFamily: "Impact, sans-serif" }}>
               {meme.topText}
             </h2>
           )}
           {meme.bottomText && (
-            <h2 className='text-overlay bottom-0' style={{ fontFamily: "Impact, sans-serif" }}>
+            <h2
+              className='text-overlay  my-2 xs:my-4 text-2xl xs:text-3xl bottom-0'
+              style={{ fontFamily: "Impact, sans-serif" }}>
               {meme.bottomText}
             </h2>
           )}
