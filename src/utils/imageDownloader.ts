@@ -13,7 +13,7 @@ export const downloadImage = async (meme: { topText: string; bottomText: string;
       ctx.drawImage(img, 0, 0);
 
       const impactFont = `Impact, sans-serif`;
-      const fontSize = Math.floor(canvas.width * 0.09); // scale font size relative to width (~7%)
+      const fontSize = Math.floor(canvas.width * 0.07); // scale font size relative to width (~7%)
       ctx.font = `bold ${fontSize}px ${impactFont}`;
       ctx.textAlign = "center";
       ctx.textBaseline = "top";
