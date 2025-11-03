@@ -22,9 +22,11 @@ const MemeSection = () => {
     bottomText: "",
     url: "",
   });
+  const [error, setError] = useState<string | null>(null);
 
   const fetchMemes = async () => {
     try {
+      setError(null);
       const response = await ky
         .get("https://api.imgflip.com/get_memes")
         .json<{ success: boolean; data: { memes: MemeItem[] } }>();
@@ -33,11 +35,9 @@ const MemeSection = () => {
 
       localStorage.setItem("memes", memeData);
     } catch (error) {
-      if (error instanceof Error) {
-        console.error(error.message);
-      } else {
-        console.error(String(error));
-      }
+      const errorMessage = error instanceof Error ? error.message : String(error);
+      console.error(errorMessage);
+      setError("Failed to load memes. Please check your connection and try again.");
     }
   };
 
@@ -81,6 +81,7 @@ const MemeSection = () => {
           <p className='text-sm lg:text-base mb-4'>
             Enter top and bottom text and generate a new meme to customize it. Download your creation when you're done.
           </p>
+
           <div className='mb-4'>
             <label className='block text-sm text-gray-600 mb-1' htmlFor='topText'>
               Top Text:
@@ -106,6 +107,7 @@ const MemeSection = () => {
               onChange={(e) => setSelectedMeme({ ...selectedMeme, bottomText: e.target.value })}
             />
           </div>
+          {error && <div className='text-red-600 mb-2'>{error}</div>}
           <div className='flex flex-col lg:flex-row gap-3'>
             <Button
               styles='bg-purple-700 hover:bg-purple-800'
