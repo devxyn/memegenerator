@@ -2,13 +2,14 @@ import ky from "ky";
 import { useEffect, useState } from "react";
 import { downloadImage } from "../utils/imageDownloader";
 import Button from "./Button";
+import Meme from "./Meme";
 
 interface MemeItem {
   name: string;
   url: string;
 }
 
-interface SelectedMeme {
+export interface SelectedMeme {
   topText: string;
   bottomText: string;
   url: string;
@@ -71,16 +72,14 @@ const MemeSection = () => {
   }, [allMemes]);
 
   return (
-    <section className='w-full h-full lg:h-[88dvh] flex flex-col p-5 lg:flex-row overflow-hidden'>
-      <div className='flex-1 flex items-center justify-center bg-white mb-10 lg:mb-0'>
+    <section className='w-full h-full lg:h-[88dvh] flex flex-col p-5 lg:p-0 lg:flex-row overflow-hidden'>
+      <div className='flex-1 flex items-center justify-center lg:justify-start lg:ml-20 bg-white mb-10 lg:mb-0'>
         <div className='w-full max-w-md'>
-          <p className='text-center lg:text-left text-base sm:text-lg text-gray-700 mb-4'>
+          <p className='text-center lg:text-left text-xl lg:text-2xl font-bold text-purple-900 mb-1'>
             Welcome to the Random Meme Generator!
-            <br />
-            <span className='text-sm sm:text-sm mt-2'>
-              Enter top and bottom text and generate a new meme to customize it. Download your creation when you're
-              done.
-            </span>
+          </p>
+          <p className='text-sm lg:text-base mb-4'>
+            Enter top and bottom text and generate a new meme to customize it. Download your creation when you're done.
           </p>
           <div className='mb-4'>
             <label className='block text-sm text-gray-600 mb-1' htmlFor='topText'>
@@ -122,23 +121,7 @@ const MemeSection = () => {
           </div>
         </div>
       </div>
-      <div className='flex-1 flex justify-center items-center lg:bg-gray-50 lg:border-l-2 lg:border-gray-200 lg:px-5'>
-        <div className='h-[80dvh] border-5 border-purple-700 rounded-lg p-4 bg-white flex items-center justify-center'>
-          <div className='relative h-full'>
-            <img src={selectedMeme.url} alt='meme' className='object-contain max-w-full max-h-full' />
-            {selectedMeme.topText && (
-              <h2 className='text-overlay top-0' style={{ fontFamily: "Impact, sans-serif" }}>
-                {selectedMeme.topText}
-              </h2>
-            )}
-            {selectedMeme.bottomText && (
-              <h2 className='text-overlay bottom-0' style={{ fontFamily: "Impact, sans-serif" }}>
-                {selectedMeme.bottomText}
-              </h2>
-            )}
-          </div>
-        </div>
-      </div>
+      <Meme meme={selectedMeme} />
     </section>
   );
 };
